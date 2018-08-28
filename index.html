@@ -57,15 +57,14 @@
 
     <script type="text/javascript">
 
-      $.get("/api/characters", function(data) {
+      $.get("/api/diners", function(data) {
         for (var i = 0; i < data.length; i++) {
           console.log(data[i]);
           var listGroupItem = $("<li class='list-group-item'>");
 
-          listGroupItem.append($("<h2>").text("Name: " + data[i].name));
-          listGroupItem.append($("<h3>").text("Role: " + data[i].role));
-          listGroupItem.append($("<h3>").text("Age: " + data[i].age));
-          listGroupItem.append($("<h3>").text("Force Points: " + data[i].forcePoints));
+          listGroupItem.append($("<h3>").text("Name: " + data[i].name));
+          listGroupItem.append($("<h3>").text("Phone: " + data[i].phone));
+          listGroupItem.append($("<h3>").text("Email: " + data[i].email));
 
           $("#character-section").append(listGroupItem);
         }
