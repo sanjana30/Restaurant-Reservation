@@ -48,6 +48,16 @@ app.get("/api/diners/:name", function(req, res) {
     return res.json(false);
   });
 
+app.post("/api/diners", function(req, res){
+    var newDiner = req.body;
+    newDiner.routeName = newDiner.name.replace(/\s+/g, "").toLowerCase();
+    console.log(newDiner);
+
+    diner.push(newDiner);
+  
+    res.json(newDiner);
+});
+
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
