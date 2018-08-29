@@ -2,7 +2,7 @@
   "name": "Restaurant-Reservation",
   "version": "1.0.0",
   "description": "A restaurant reservation application demo built using Javascript and node Express",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
