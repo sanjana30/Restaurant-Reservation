@@ -18,9 +18,26 @@ var diner = [
         routeName: "john",
         name: "John",
         phone: "000-000-000",
-        email:  "john@example.com"
+        email:  "john@example.com",
+        
+    },
+    {
+        routeName: "sanjana",
+        name: "Sanjana",
+        phone: "100-000-000",
+        email:  "sanjana@example.com",
+        
+    },
+    {
+        routeName: "divyansh",
+        name: "Divyansh",
+        phone: "110-000-000",
+        email:  "divyansh@example.com",
+        
     }
 ]
+
+var waiting = [];
 
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
@@ -31,7 +48,7 @@ app.get("/add", function(req, res) {
   });
 
 app.get("/api/diners", function(req, res) {
-    return res.json(diner);
+    return res.json({obj1: diner, obj2: waiting});
   });
 
 app.get("/api/diners/:name", function(req, res) {
@@ -48,15 +65,26 @@ app.get("/api/diners/:name", function(req, res) {
     return res.json(false);
   });
 
-app.post("/api/diners", function(req, res){
-    var newDiner = req.body;
-    newDiner.routeName = newDiner.name.replace(/\s+/g, "").toLowerCase();
-    console.log(newDiner);
 
-    diner.push(newDiner);
-  
-    res.json(newDiner);
-});
+    app.post("/api/diners", function(req, res){
+        var newDiner = req.body;
+        newDiner.routeName = newDiner.name.replace(/\s+/g, "").toLowerCase();
+        console.log(newDiner);
+        if(diner.length < 3){
+            
+            diner.push(newDiner);
+            res.json(newDiner);
+        }
+        else{
+            
+            waiting.push(newDiner);
+            res.json(newDiner);
+        }
+        
+        
+        
+    });
+
 
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
