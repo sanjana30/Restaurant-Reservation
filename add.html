@@ -20,7 +20,7 @@
       <h3>Hurry!!! Book a table</h3>
       <hr>
       <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Tables</button></a>
-      <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Reserve a table</button></a>
+      <a href="/add"><button  class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Reserve a table</button></a>
     </div>
     <div class="row" style="margin-top: 10px; margin-bottom: 10px">
 
@@ -39,13 +39,13 @@
               </div>
 
               <div class="form-group">
-                <label for="role">Phone No.</label>
-                <input type="text" class="form-control" id="role">
+                <label for="phone">Phone No.</label>
+                <input type="text" class="form-control" id="phone">
               </div>
 
               <div class="form-group">
-                <label for="age">Email</label>
-                <input type="email" class="form-control" id="age">
+                <label for="mail">Email</label>
+                <input type="email" class="form-control" id="mail">
               </div>
 
             </form>
@@ -65,15 +65,15 @@
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
 
-      var newCharacter = {
+      var newDiner = {
         name: $("#name").val().trim(),
-        role: $("#role").val().trim(),
-        age: $("#age").val().trim(),
-        forcePoints: $("#force-points").val().trim()
+        phone: $("#phone").val().trim(),
+        email: $("#mail").val().trim(),
+        
       };
 
       // Question: What does this code do??
-      $.post("/api/characters", newCharacter)
+      $.post("/api/diners", newDiner)
         .then(function(data) {
           console.log(data);
           alert("Adding character...");
